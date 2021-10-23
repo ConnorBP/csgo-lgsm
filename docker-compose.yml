@@ -3,14 +3,18 @@ version: '2'
 services:
   sandstorm:
     container_name: sandstorm
-    image: taxx/sandstorm-lgsm
+    image: taxx/csgo-lgsm
     restart: unless-stopped
     environment:
       - TZ=Europe/Paris
       - GID=1001
       - UID=1001
     volumes:
-      - /my/local/path/to/sandstorm/:/sandstorm # Server files and config files
+      - /my/local/path/to/csgo/:/csgo # Server files and config files
     ports:
-      - 27103:27103/udp # Server port
-      - 27132:27132/udp # Query port
+      - 27055:27055/tcp
+      - 27055:27055/udp
+      - 27056:27056/udp
+      - 27056:27056/tcp
+      - 27155:27155/udp
+      - 27155:27155/tcp
