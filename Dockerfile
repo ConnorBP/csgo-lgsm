@@ -45,7 +45,8 @@ WORKDIR /csgo/
 
 EXPOSE ${SERVERPORT}/udp ${QUERYPORT}/udp
 
-VOLUME  /csgo
+# incompattible with railway
+#VOLUME  /csgo
 
 # Change the working directory to /csgo
 WORKDIR /csgo
