@@ -46,9 +46,8 @@ WORKDIR /csgo/
 
 RUN chown -R csgo:csgo /csgo
 
-# EXPOSE ${SERVERPORT}/tcp ${QUERYPORT}/tcp 22/tcp
-# EXPOSE ${SERVERPORT}/udp ${QUERYPORT}/udp
-EXPOSE ${SERVERPORT} ${QUERYPORT}
+# EXPOSE 22/tcp
+EXPOSE ${SERVERPORT}/udp ${QUERYPORT}/udp
 
 VOLUME  /csgo
 
