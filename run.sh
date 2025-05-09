@@ -8,6 +8,7 @@ mkfifo /tmp/FIFO
 
 export TERM=linux
 
+chown -R csgo:csgo /csgo /home/csgo
 cd /csgo
 
 if [ ! -f csgoserver ]; then 

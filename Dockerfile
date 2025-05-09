@@ -7,10 +7,10 @@ ENV SERVERPORT 27015
 # Query PORT (you can't remap with docker, it doesn't work)
 ENV QUERYPORT 27016
 
-# UID of the user steam
-ENV UID 1000
-# GID of the user steam
-ENV GID 1000
+# UID of the user csgo
+ENV UID=1001
+# GID of the user csgo
+ENV GID=1001
 
 # Install dependencies 
 RUN dpkg --add-architecture i386
@@ -18,7 +18,8 @@ RUN apt update && \
     apt install -y mailutils postfix curl wget file tar \
 	bzip2 gzip unzip bsdmainutils python util-linux \
 	ca-certificates binutils bc jq tmux netcat lib32gcc1 \
-	lib32stdc++6 cron iproute2 procps libsdl2-2.0-0:i386
+	lib32stdc++6 cron iproute2 procps libsdl2-2.0-0:i386 \
+	distro-info pigz
 
 # Run commands as the steam user
 RUN adduser \ 
@@ -43,9 +44,15 @@ RUN touch /root/.bash_profile & \
 
 WORKDIR /csgo/
 
-EXPOSE ${SERVERPORT}/udp ${QUERYPORT}/udp
+RUN chown -R csgo:csgo /csgo
+
+# EXPOSE ${SERVERPORT}/tcp ${QUERYPORT}/tcp 22/tcp
+# EXPOSE ${SERVERPORT}/udp ${QUERYPORT}/udp
+EXPOSE ${SERVERPORT} ${QUERYPORT}
 
 VOLUME  /csgo
+
+RUN chown -R csgo:csgo /csgo
 
 # Change the working directory to /csgo
 WORKDIR /csgo
