@@ -1,11 +1,11 @@
 FROM debian:buster-slim
 
-LABEL maintainer taxx
+LABEL maintainer=segfault1337
 
 # Server PORT (you can't remap with docker, it doesn't work)
-ENV SERVERPORT 27015
+ENV SERVERPORT=27015
 # Query PORT (you can't remap with docker, it doesn't work)
-ENV QUERYPORT 27016
+ENV QUERYPORT=27016
 
 # UID of the user csgo
 ENV UID=1001
