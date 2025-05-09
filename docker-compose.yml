@@ -10,8 +10,10 @@ services:
       - GID=1001
       - UID=1001
     volumes:
-      # - /my/local/path/to/csgo/:/csgo # Server files and config files
-      - C:\csco_server\csgo
+      #- /my/local/path/to/csgo/:/csgo # Server files and config files
+      #- C:\csco_server\csgo:/csgo
+      #- /csgo/:/csgo # Server files and config files
+      - csgo_game_files:/csgo # Server files and config files
     ports:
       - 27055:27055/tcp
       - 27055:27055/udp
@@ -19,3 +21,5 @@ services:
       - 27056:27056/tcp
       - 27155:27155/udp
       - 27155:27155/tcp
+volumes:
+  csgo_game_files:
